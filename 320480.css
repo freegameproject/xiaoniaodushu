@@ -1,0 +1,115 @@
+body {
+    font-size: 16px;
+}
+
+/* line 14, /home/rof/src/github.com/friendsoftheweb/friendsofthewebsite/source/stylesheets/_media-queries.scss */
+.content,
+footer .content {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+/* line 19, /home/rof/src/github.com/friendsoftheweb/friendsofthewebsite/source/stylesheets/_media-queries.scss */
+.narrow-col {
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+/* line 24, /home/rof/src/github.com/friendsoftheweb/friendsofthewebsite/source/stylesheets/_media-queries.scss */
+form {
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+/* line 29, /home/rof/src/github.com/friendsoftheweb/friendsofthewebsite/source/stylesheets/_media-queries.scss */
+ul.clients-and-collaborators {
+    -webkit-columns: 1 3em;
+    -moz-columns: 1 3em;
+    columns: 1 3em;
+    font-size: 0.9em;
+}
+
+/* line 34, /home/rof/src/github.com/friendsoftheweb/friendsofthewebsite/source/stylesheets/_media-queries.scss */
+.friend-container .friend {
+    width: 50%;
+}
+
+/* line 255, /home/rof/src/github.com/friendsoftheweb/friendsofthewebsite/source/stylesheets/_media-queries.scss */
+.homepage-blurb {
+    text-align: center;
+}
+
+/* line 259, /home/rof/src/github.com/friendsoftheweb/friendsofthewebsite/source/stylesheets/_media-queries.scss */
+.nav-left {
+    left: 6%;
+}
+
+/* line 263, /home/rof/src/github.com/friendsoftheweb/friendsofthewebsite/source/stylesheets/_media-queries.scss */
+.nav-right {
+    right: 6%;
+}
+
+/* line 267, /home/rof/src/github.com/friendsoftheweb/friendsofthewebsite/source/stylesheets/_media-queries.scss */
+.inline-author {
+    display: none !important;
+}
+
+/* line 272, /home/rof/src/github.com/friendsoftheweb/friendsofthewebsite/source/stylesheets/_media-queries.scss */
+.contact-info,
+.business-address {
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+/* line 277, /home/rof/src/github.com/friendsoftheweb/friendsofthewebsite/source/stylesheets/_media-queries.scss */
+.friend-container .friend .listening-bubble .visualizer {
+    top: 9px;
+    bottom: 8px;
+    right: 9px;
+    width: 12px;
+}
+
+/* line 287, /home/rof/src/github.com/friendsoftheweb/friendsofthewebsite/source/stylesheets/_media-queries.scss */
+footer .call-us,
+footer .email-us,
+footer .tweet-at-us {
+    width: 33.3333%;
+    padding: 2em 0;
+    border-bottom: none;
+    border-right: 1px dotted #303841;
+}
+
+/* line 293, /home/rof/src/github.com/friendsoftheweb/friendsofthewebsite/source/stylesheets/_media-queries.scss */
+footer .call-us .label,
+footer .email-us .label,
+footer .tweet-at-us .label {
+    display: none;
+}
+
+/* line 298, /home/rof/src/github.com/friendsoftheweb/friendsofthewebsite/source/stylesheets/_media-queries.scss */
+footer .tweet-at-us {
+    border-right: none;
+}
+
+/* line 302, /home/rof/src/github.com/friendsoftheweb/friendsofthewebsite/source/stylesheets/_media-queries.scss */
+footer .our-friends {
+    padding: 2em 0 2.2em;
+    width: 100%;
+}
+
+/* line 309, /home/rof/src/github.com/friendsoftheweb/friendsofthewebsite/source/stylesheets/_media-queries.scss */
+footer .call-us-icon,
+footer .tweet-at-us-icon,
+footer .email-us-icon {
+    font-size: 1.5em;
+}
+
+/* line 315, /home/rof/src/github.com/friendsoftheweb/friendsofthewebsite/source/stylesheets/_media-queries.scss */
+footer form input[type="text"] {
+    width: 68%;
+}
+
+/* line 319, /home/rof/src/github.com/friendsoftheweb/friendsofthewebsite/source/stylesheets/_media-queries.scss */
+footer form input[type="submit"] {
+    width: 30%;
+}

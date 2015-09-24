@@ -1,0 +1,43 @@
+body {
+    font-size: 20px;
+}
+
+/* line 14, /home/rof/src/github.com/friendsoftheweb/friendsofthewebsite/source/stylesheets/_media-queries.scss */
+.content,
+footer .content {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+/* line 19, /home/rof/src/github.com/friendsoftheweb/friendsofthewebsite/source/stylesheets/_media-queries.scss */
+.narrow-col {
+    padding-left: 14%;
+    padding-right: 14%;
+}
+
+/* line 24, /home/rof/src/github.com/friendsoftheweb/friendsofthewebsite/source/stylesheets/_media-queries.scss */
+form {
+    margin-left: 14%;
+    margin-right: 14%;
+}
+
+/* line 29, /home/rof/src/github.com/friendsoftheweb/friendsofthewebsite/source/stylesheets/_media-queries.scss */
+ul.clients-and-collaborators {
+    -webkit-columns: 3 3em;
+    -moz-columns: 3 3em;
+    columns: 3 3em;
+    font-size: 0.66em;
+}
+
+/* line 34, /home/rof/src/github.com/friendsoftheweb/friendsofthewebsite/source/stylesheets/_media-queries.scss */
+.friend-container .friend {
+    width: 25%;
+}
+
+/* line 216, /home/rof/src/github.com/friendsoftheweb/friendsofthewebsite/source/stylesheets/_media-queries.scss */
+.friend-container .friend .listening-bubble .visualizer {
+    top: 10px;
+    bottom: 10px;
+    right: 11px;
+    width: 16px;
+}
