@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url("img/bg.png");
+    background-position: 46vw 0;
+    background-repeat: no-repeat;
+    background-size: 40vw;
+}
+
+.nav {
+    width: 100vw;
+    height: 9vw;
+    overflow: hidden;
+}
+
+.bc {
+    max-width: 70vw;
+    margin: auto;
+}
+
+.logo {
+}
+
+.logo_img {
+    height: 4vw;
+    margin-top: 2.5vw;
+}
+
+.flex {
+    display: flex;
+}
+
+.banner {
+    width: 100%;
+    height: 35vw;
+    background: #f19149;
+    background-image: url("img/banner_left.png");
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.download {
+    width: 10vw;
+    position: absolute;
+    left: 30vw;
+    top: 14vw;
+}
+
+.qrcode {
+    width: 100%;
+}
+
+.download_title {
+    text-align: center;
+    font-size: 0.5vw;
+    color: #fff;
+}
+
+.phone{
+    /*
+    margin: -2vw 0px -2vw 0px;
+    box-shadow: 1vw 1vw 1vw rgba(0, 0, 0, 0.2);
+    border-radius: 3vw;
+    background: none;*/
+    width: 20vw;
+    border: none;
+    position: absolute;
+    left: 51vw;
+    top: -4vw;
+    bottom: -3.3vw;
+    background: url("img/phone.png");
+    background-size: 100%;
+}
+
+.phone:before{
+    width: 20vw;
+    border: none;
+    position: absolute;
+    left: 1vw;
+    top: 1vw;
+    bottom: -1vw;
+    content: '';
+    display: block;
+    background: rgba(0,0,0,0.2);
+    /* box-shadow: 1vw 1vw 1vw rgba(0, 0, 0, 0.2); */
+    border-radius: 4vw;
+    -webkit-filter: blur(0.5vw);
+}
+
+
+.phone:after{
+    width: 20vw;
+    border: none;
+    position: absolute;
+    left: 0vw;
+    top: 0vw;
+    bottom: 0vw;
+    content: '';
+    display: block;
+    background: url("img/phone.png");
+    background-size: 100%;
+}
