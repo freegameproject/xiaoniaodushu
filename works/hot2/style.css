@@ -115,6 +115,28 @@ body {
     background-size: 100%;
     background-repeat: no-repeat;
 }
+
+.window {
+    position: absolute;
+    width: 87%;
+    left: 7%;
+    top: 13%;
+    height: 72%;
+    background-color: #000;
+    border-radius: 0.5vw;
+    overflow: hidden;
+}
+.pages{
+    width: 500%;
+    height: 100%;
+}
+.page{
+    width:20%;
+    margin: 0;
+    padding: 0;
+    float: left;
+    clear: none;
+}
 /*
 .phone:before{
     width: 20vw;
