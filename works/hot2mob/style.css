@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.pages {
+
+}
+
+.page {
+    width: 100vw;
+    height: 100vh;
+}
+
+.page1 {
+    background: #fff;
+}
+
+.page2 {
+    background: #c7ecdd;
+}
+
+.page3 {
+    background: #ffde00;
+}
+
+.page4 {
+    background: #ffb070;
+}
+
+.page5 {
+    background: #294155;
+}
