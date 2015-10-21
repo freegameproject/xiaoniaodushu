@@ -11,10 +11,22 @@
     width: 100vw;
     height: 100vh;
     display: flex;
+    position: relative;
+    flex-direction: column;
 }
 
 .page1 {
     background: #fff;
+    background: url("images/page1_bottom.png");
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.logo {
+    width: 60vw;
+    margin: auto;
+    margin-top: 30vw;
 }
 
 .download_btn{
@@ -31,14 +43,80 @@
     */
     margin: auto;
     width: 40vw;
+    margin-top: -50vw;
 }
 
 .page2 {
     background: #c7ecdd;
+    background-image: url(images/page2_bg.png);
+    background-position: right 50vw;
+    background-repeat: no-repeat;
+    background-size: 80%;
 }
+
+@-webkit-keyframes page2_face{
+    50%{
+        transform: scale(1.2);
+    }
+}
+
+.page2_face {
+    position: absolute;
+    width: 56vw;
+    top: 10vw;
+    -webkit-animation: page2_face 2s linear infinite;
+}
+.page2_title_1 {
+    position: absolute;
+    bottom: 28vw;
+    font-size: 14vw;
+    color: #4bb1b2;
+    right: 5vw;
+}
+.page2_title_2 {
+    position: absolute;
+    bottom: 22vw;
+    font-size: 6vw;
+    color: #4bb1b2;
+    right: 5vw;
+}
+
 
 .page3 {
     background: #ffde00;
+}
+.page3_title_1 {
+    position: absolute;
+    bottom: 28vw;
+    font-size: 14vw;
+    color: #c49800;
+    left: 5vw;
+}
+.page3_title_2 {
+    position: absolute;
+    bottom: 22vw;
+    font-size: 6vw;
+    color: #c49800;
+    left: 5vw;
+}
+
+.page3_man_obj_0 {
+    position: absolute;
+    width: 80vw;
+    right: 0vw;
+    top: 15vw;
+}
+.page3_man_obj_1 {
+    position: absolute;
+    right: 40vw;
+    top: 53vw;
+    width: 17vw;
+}
+.page3_man_obj_2 {
+    position: absolute;
+    right: 21.8vw;
+    top: 61.4vw;
+    width: 23vw;
 }
 
 .page4 {
@@ -47,4 +125,9 @@
 
 .page5 {
     background: #294155;
+}
+
+.downloadbanner {
+    position: fixed;
+    bottom: 0;
 }
