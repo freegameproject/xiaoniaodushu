@@ -10,10 +10,27 @@
 .page {
     width: 100vw;
     height: 100vh;
+    display: flex;
 }
 
 .page1 {
     background: #fff;
+}
+
+.download_btn{
+    /*
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 100px;
+    height: 50px;
+    display: block;
+    */
+    margin: auto;
+    width: 40vw;
 }
 
 .page2 {
