@@ -29,7 +29,7 @@
     margin-top: 30vw;
 }
 
-.download_btn{
+.download_btn {
     /*
     position: absolute;
     top: 0;
@@ -54,8 +54,8 @@
     background-size: 80%;
 }
 
-@-webkit-keyframes page2_face{
-    50%{
+@-webkit-keyframes page2_face {
+    50% {
         transform: scale(1.2);
     }
 }
@@ -66,6 +66,7 @@
     top: 10vw;
     -webkit-animation: page2_face 2s linear infinite;
 }
+
 .page2_title_1 {
     position: absolute;
     bottom: 28vw;
@@ -73,6 +74,7 @@
     color: #4bb1b2;
     right: 5vw;
 }
+
 .page2_title_2 {
     position: absolute;
     bottom: 22vw;
@@ -81,10 +83,10 @@
     right: 5vw;
 }
 
-
 .page3 {
     background: #ffde00;
 }
+
 .page3_title_1 {
     position: absolute;
     bottom: 28vw;
@@ -92,6 +94,7 @@
     color: #c49800;
     left: 5vw;
 }
+
 .page3_title_2 {
     position: absolute;
     bottom: 22vw;
@@ -106,12 +109,14 @@
     right: 0vw;
     top: 25vw;
 }
+
 .page3_man_obj_1 {
     position: absolute;
     right: 42.8vw;
     top: 65vw;
     width: 19vw;
 }
+
 .page3_man_obj_2 {
     position: absolute;
     right: 23vw;
@@ -123,7 +128,7 @@
     background: #ffb070;
 }
 
-.page4_mobile{
+.page4_mobile {
     position: absolute;
     left: 5vw;
     top: 10vw;
@@ -134,7 +139,23 @@
     position: absolute;
     right: 25vw;
     top: 80vw;
+    width: 9vw;
 }
+
+.page4_car {
+    position: absolute;
+    right: 8vw;
+    top: 92vw;
+    width: 20vw;
+}
+
+.page4_star {
+    position: absolute;
+    right: 5vw;
+    top: 70vw;
+    width: 15vw;
+}
+
 .page4_title_1 {
     position: absolute;
     bottom: 28vw;
@@ -142,6 +163,7 @@
     color: #8e6747;
     right: 5vw;
 }
+
 .page4_title_2 {
     position: absolute;
     bottom: 22vw;
@@ -154,6 +176,41 @@
     background: #294155;
 }
 
+.page5_title_1 {
+    position: absolute;
+    bottom: 28vw;
+    font-size: 14vw;
+    color: #71e2e3;
+    right: 0;
+    left: 0;
+    margin: auto;
+    text-align: center;
+
+}
+
+.page5_title_2 {
+    position: absolute;
+    bottom: 22vw;
+    font-size: 6vw;
+    color: #71e2e3;
+    right: 5vw;
+    right: 0;
+    left: 0;
+    margin: auto;
+    text-align: center;
+}
+.canvas{
+    position: absolute;
+    width: 90vw;
+    height: 90vw;
+    margin: auto;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    top: 20vw;
+    background: url("images/c.png");
+    background-size: 100%;
+}
 .downloadbanner {
     position: fixed;
     bottom: 0;
