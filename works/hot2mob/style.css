@@ -102,25 +102,52 @@
 
 .page3_man_obj_0 {
     position: absolute;
-    width: 80vw;
+    width: 85vw;
     right: 0vw;
-    top: 15vw;
+    top: 25vw;
 }
 .page3_man_obj_1 {
     position: absolute;
-    right: 40vw;
-    top: 53vw;
-    width: 17vw;
+    right: 42.8vw;
+    top: 65vw;
+    width: 19vw;
 }
 .page3_man_obj_2 {
     position: absolute;
-    right: 21.8vw;
-    top: 61.4vw;
-    width: 23vw;
+    right: 23vw;
+    top: 74.38vw;
+    width: 24.9vw;
 }
 
 .page4 {
     background: #ffb070;
+}
+
+.page4_mobile{
+    position: absolute;
+    left: 5vw;
+    top: 10vw;
+    width: 54vw;
+}
+
+.page4_tower {
+    position: absolute;
+    right: 25vw;
+    top: 80vw;
+}
+.page4_title_1 {
+    position: absolute;
+    bottom: 28vw;
+    font-size: 14vw;
+    color: #8e6747;
+    right: 5vw;
+}
+.page4_title_2 {
+    position: absolute;
+    bottom: 22vw;
+    font-size: 6vw;
+    color: #8e6747;
+    right: 5vw;
 }
 
 .page5 {
@@ -131,3 +158,5 @@
     position: fixed;
     bottom: 0;
 }
+
+
