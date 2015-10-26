@@ -9,7 +9,7 @@ window.onload=function(){
     var c_1=new Image();
     c_1.src='images/c_1.png';
 
-    s=c_w/3*2;//偏移距离
+    s=c_w/3*2/2;//偏移距离
 
     //中心绘制
     function draw(img,point,width,height){
@@ -22,17 +22,16 @@ window.onload=function(){
 
     var f=1;
 
-
-    var left=c_w/2-s/2;//最左边
-    var right=c_w/2+s/2;//最右边
-    var top=c_h/2-s/2;//最上面
-    var bottom=c_h/2+s/2;//最下面
+    var left=c_w/2-s;//最左边
+    var right=c_w/2+s;//最右边
+    var top=c_h/2-s;//最上面
+    var bottom=c_h/2+s;//最下面
 
 
     var x=left;//x
     var y=top;//y
 
-    step=2;//步长
+    step=1;//步长
 
     function loop(time){
         c.clearRect(0, 0, canvas.width, canvas.height);
@@ -45,48 +44,56 @@ window.onload=function(){
         //获取每个元素的 x y 根据x y 判断 位于第几象限
 
 
+        //通过计算 元素 的 象限，确定 方向 f
+
+
+
         switch (f){
             case 1:
-                //从左到右
+                //从左到右 上半圆
 
                 x+=step;
 
                 //计算y的位置
 
+                var a=Math.abs(x-c_w/2);
+
+
+
+                var b=Math.sqrt(s*s-a*a);
+
+                y=c_h/2-b;
+
+                console.log(x+":"+y);
+
                 if(x>=right){
                     f=2;
+
+                    y=c_h/2;
                 }
 
                 break;
             case 2:
-                //从上到下
+                //从右到左 下半圆
 
-                y+=step;
-                //计算x的位置
-
-                if(y>=bottom){
-                    f=3;
-
-                }
-
-                break;
-            case 3:
-                //从右到左
+                console.log(y);
                 x-=step;
-                //计算y的位置
 
+
+                //计算y的位置
+                var a=Math.abs(x-c_w/2);
+
+
+
+                var b=Math.sqrt(s*s-a*a);
+
+                y=c_h/2+b;
                 if(x<=left){
-                    f=4;
-                }
-                break;
-            case 4:
-                //从下到上
-                y-=step;
-                //计算x的位置
-                if(y<=top){
                     f=1;
                 }
+
                 break;
+
         }
 
 
