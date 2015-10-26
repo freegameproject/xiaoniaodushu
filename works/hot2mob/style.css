@@ -208,7 +208,9 @@
     right: 0;
     overflow: hidden;
     top: 20vw;
+    /*
     background: url("images/c.png");
+    */
     background-size: 100%;
 }
 .downloadbanner {
