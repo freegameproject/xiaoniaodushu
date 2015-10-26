@@ -43,7 +43,7 @@ window.onload = function () {
     var x = left;//x
     var y = top;//y
 
-    step = 10;//步长
+    step = 6;//步长
 
     var objs = [];
 
@@ -77,6 +77,34 @@ window.onload = function () {
     objs.push({
         img: c_5,
         x: 470,
+        y: top,
+        f: 1
+    });
+
+    objs.push({
+        img: c_6,
+        x: 600,
+        y: top,
+        f: 1
+    });
+
+    objs.push({
+        img: c_7,
+        x: 700,
+        y: top,
+        f: 1
+    });
+
+    objs.push({
+        img: c_8,
+        x: 800,
+        y: top,
+        f: 1
+    });
+
+    objs.push({
+        img: c_9,
+        x: 900,
         y: top,
         f: 1
     });
