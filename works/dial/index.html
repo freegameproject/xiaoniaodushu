@@ -64,6 +64,24 @@
             font-size: 4vw;
             margin: 2vw auto;
         }
+        .alert{
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background:rgba(0,0,0,0.8);
+            align-items: center;
+            align-content: center;
+            flex-flow: column;
+            display:none;
+        }
+        .alert_window{
+            margin: auto;
+            width: 50vw;
+            height: auto;
+            display:none;
+        }
     </style>
 </head>
 <body>
@@ -78,6 +96,14 @@
     </li><li>
         2015-11-01 13:58:37 嫪毐喜欢玩巨轮
     </li>
+</div>
+<div id="alert" class="alert">
+    <div id="success" class="alert_window">
+        <img src="alert_success.png" width="100%" alt=""/>
+    </div>
+    <div id="unsuccess" class="alert_window">
+        <img src="alert_unsuccess.png" width="100%" alt=""/>
+    </div>
 </div>
 </body>
 </html>

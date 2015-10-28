@@ -95,15 +95,22 @@ window.onload = function () {
     draw(img, {x: c_w / 2, y: c_h / 2}, c_w, c_h);
     draw(zz, {x: c_w / 2, y: c_h / 2}, c_w, c_h);
 
-    function success(){
+    function success() {
         //中奖
+        document.getElementById("alert").style.display = "flex";
+        document.getElementById("success").style.display = "block";
+        document.getElementById("unsuccess").style.display = "none";
         console.log('中奖');
     }
 
-    function unsuccess(){
+    function unsuccess() {
         //没中奖
+        document.getElementById("alert").style.display="flex";
+        document.getElementById("success").style.display="none";
+        document.getElementById("unsuccess").style.display="block";
         console.log('没中奖');
     }
+
     function start() {
         requestID = window.requestAnimationFrame(loop);
     }
@@ -116,25 +123,25 @@ window.onload = function () {
         setTimeout(function () {
             console.log(initm);
             switch (true) {
-                case (initm>330 && initm<360):
+                case (initm > 330 && initm < 360):
                     unsuccess();
                     break;
-                case (initm>0 && initm<30):
+                case (initm > 0 && initm < 30):
                     unsuccess();
                     break;
-                case (initm>30 && initm<90):
+                case (initm > 30 && initm < 90):
                     success();
                     break;
-                case (initm>90 && initm<150):
+                case (initm > 90 && initm < 150):
                     unsuccess();
                     break;
-                case (initm>150 && initm<210):
+                case (initm > 150 && initm < 210):
                     success();
                     break;
-                case (initm>210 && initm<270):
+                case (initm > 210 && initm < 270):
                     unsuccess();
                     break;
-                case (initm>270 && initm<330):
+                case (initm > 270 && initm < 330):
                     success();
                     break;
             }
@@ -213,5 +220,8 @@ window.onload = function () {
         }
 
 
+    });
+    document.getElementById("alert").addEventListener('click', function () {
+        document.getElementById("alert").style.display="none";
     });
 }
