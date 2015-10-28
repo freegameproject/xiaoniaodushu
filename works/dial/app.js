@@ -19,11 +19,12 @@ window.onload = function () {
     //config
     step = 0;
     minStep = 0;
-    maxStep = 15;
+    is_max_step = 0;//是否达到最大速度
+    r = 3;
 
     degree = 0;//旋转角度
 
-
+    requestID = 0;
     maxDegree = 0;//最大旋转角度
 
     function loop(time) {
@@ -46,16 +47,15 @@ window.onload = function () {
 
         switch (maxDegree) {
             case 0:
-                //一直旋转
-                //加速
-                step += 0.5;
-                //加到一定程度变为匀速
-                if (step >= maxStep) {
-                    step = maxStep;
+                if (is_max_step === 0) {
+                    step += 0.5;
                 }
                 degree += step;
                 if (degree >= 360) {
-                    degree = 0;
+
+                    is_max_step = 1;//达到最大速度
+
+                    degree = degree - 360;
                 }
                 break;
             default:
@@ -63,24 +63,24 @@ window.onload = function () {
                 //step=step*degree/maxDegree;
 
                 //console.log(1-degree/maxDegree);
-
-
                 if (degree + 360 >= maxDegree) {
-
-                } else {
-                    step -= 0.1;
-                    if (step <= 1) {
-                        step = 1;
-                    }
+                    //到了减速的时间
+                    step -= 0.5;
                 }
-                if (step <= 0.01) {
-                    step = 0.01;
+
+                if (step < 1) {
+                    step = 1;
                 }
                 degree += step;
-                console.log(degree + "/" + maxDegree);
+
+                console.log("step:" + step);
+
                 if (degree >= maxDegree) {
+                    degree = maxDegree;
                     stop();
                 }
+
+                console.log(degree + "/" + maxDegree);
 
         }
         degree = Math.floor(degree);
@@ -105,17 +105,17 @@ window.onload = function () {
 
     function unsuccess() {
         //没中奖
-        document.getElementById("alert").style.display="flex";
-        document.getElementById("success").style.display="none";
-        document.getElementById("unsuccess").style.display="block";
+        document.getElementById("alert").style.display = "flex";
+        document.getElementById("success").style.display = "none";
+        document.getElementById("unsuccess").style.display = "block";
         console.log('没中奖');
     }
 
-    function start() {
+    start = function () {
         requestID = window.requestAnimationFrame(loop);
     }
 
-    function stop() {
+    stop = function () {
         window.cancelAnimationFrame(requestID);
         requestID = 0;
 
@@ -150,24 +150,39 @@ window.onload = function () {
 
     }
 
-    var initm = 0;//初始化的角度
+    initm = 0;//初始化的角度
     setMax = function (m) {
         initm = m;//停留的位置就是下一次初始化的角度
-        maxDegree = m + 360 * 5;
+        maxDegree = m + 360 * r;
     }
 
     /* init */
-    requestID = 0;
-    step = 1;
-    degree = 0;
-    maxDegree = 0;
+    init=function(){
+        requestID = 0;
+        step = 1;
+        degree = 0;
+        maxDegree = 0;
+        is_max_step = 0;//没有达到最大速度
+    }
+    z = function (degree) {
+        c.save();
+        c.translate(c_w / 2, c_h / 2);//重置0,0坐标点
+        c.rotate(degree * Math.PI / 180);
+        draw(zz, {x: 0, y: 0}, c_w, c_h);
+        c.restore();
+    }
     document.getElementById("start").addEventListener('click', function () {
+
+        padding = 5;
+        step = 1;
+        maxDegree = 0;
+        is_max_step = 0;//没有达到最大速度
         if (requestID === 0) {
-            step = 0.1;
+
             degree = initm;
             maxDegree = 0;
             if (degree > 360) {
-                degree = degree
+                degree = degree - 360;
             }
             start();
 
@@ -189,27 +204,27 @@ window.onload = function () {
                         switch (r) {
                             case 0:
                                 //330-360
-                                jd = Math.floor(Math.random() * (30 - 1) + (330 + 1));
+                                jd = Math.floor(Math.random() * (30 - padding) + (330 + padding));
                                 break;
                             case 1:
-                                jd = Math.floor(Math.random() * (30 - 1) + (0 + 1));
+                                jd = Math.floor(Math.random() * (30 - padding) + (0 + padding));
                                 break;
                         }
                         break;
                     case 2:
-                        jd = Math.floor(Math.random() * (60 - 1) + (30 + 1));
+                        jd = Math.floor(Math.random() * (60 - padding) + (30 + padding));
                         break;
                     case 3:
-                        jd = Math.floor(Math.random() * (60 - 1) + (90 + 1));
+                        jd = Math.floor(Math.random() * (60 - padding) + (90 + padding));
                         break;
                     case 4:
-                        jd = Math.floor(Math.random() * (60 - 1) + (150 + 1));
+                        jd = Math.floor(Math.random() * (60 - padding) + (150 + padding));
                         break;
                     case 5:
-                        jd = Math.floor(Math.random() * (60 - 1) + (210 + 1));
+                        jd = Math.floor(Math.random() * (60 - padding) + (210 + padding));
                         break;
                     case 6:
-                        jd = Math.floor(Math.random() * (60 - 1) + (270 + 1));
+                        jd = Math.floor(Math.random() * (60 - padding) + (270 + padding));
                         break;
                 }
 
@@ -217,12 +232,12 @@ window.onload = function () {
                 //setMax(Math.floor(Math.random() * 360));
                 console.log(jd);
                 setMax(jd);
-            }, 1000);
+            }, 3000);
         }
 
 
     });
     document.getElementById("alert").addEventListener('click', function () {
-        document.getElementById("alert").style.display="none";
+        document.getElementById("alert").style.display = "none";
     });
 }
