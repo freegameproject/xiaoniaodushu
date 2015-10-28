@@ -36,7 +36,7 @@ window.onload = function () {
 
 
         c.translate(0, 0);//重置0,0坐标点
-        draw(img, {x: c_w / 2, y: c_h / 2}, 360, 360);//绘制正常区域
+        draw(img, {x: c_w / 2, y: c_h / 2}, c_w, c_h);//绘制正常区域
         c.save();
 
         step=parseFloat(step);
@@ -86,14 +86,14 @@ window.onload = function () {
         degree=Math.floor(degree);
         c.translate(c_w / 2, c_h / 2);//重置0,0坐标点
         c.rotate(degree * Math.PI / 180);
-        draw(zz, {x: 0, y: 0}, 360, 360);
+        draw(zz, {x: 0, y: 0}, c_w, c_h);
         c.restore();
 
     }
 
 
-    draw(img, {x: c_w / 2, y: c_h / 2}, 360, 360);
-    draw(zz, {x: c_w / 2, y: c_h / 2}, 360, 360);
+    draw(img, {x: c_w / 2, y: c_h / 2}, c_w, c_h);
+    draw(zz, {x: c_w / 2, y: c_h / 2}, c_w, c_h);
 
     function start() {
         requestID = window.requestAnimationFrame(loop);
@@ -101,9 +101,10 @@ window.onload = function () {
 
     function stop() {
         window.cancelAnimationFrame(requestID);
-
+        requestID=0;
         setTimeout(function(){
             alert(initm);
+
             if (initm > 0 && initm < 30) {
                 alert("中奖啦，恭喜你！");
             } else {
@@ -122,21 +123,24 @@ window.onload = function () {
     }
 
     /* init */
+    requestID=0;
     step = 1;
     degree = 0;
     maxDegree = 0;
-    canvas.addEventListener('click', function () {
-        step = 0.1;
-        degree = initm;
-        maxDegree = 0;
-        if (degree > 360) {
-            degree = degree
+    document.getElementById("start").addEventListener('click', function () {
+        if(requestID===0){
+            step = 0.1;
+            degree = initm;
+            maxDegree = 0;
+            if (degree > 360) {
+                degree = degree
+            }
+            start();
+            setTimeout(function(){
+                setMax(Math.floor(Math.random()*360));
+            },1000);
         }
 
-        start();
-        setTimeout(function(){
-            setMax(Math.floor(Math.random()*360));
-        },1000);
 
     });
 }

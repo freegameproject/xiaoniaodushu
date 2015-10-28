@@ -5,23 +5,67 @@
     <title></title>
     <script src="app.js"></script>
     <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
         canvas{
-            width: 100vw;
-            height: 100vw;
+            width: 80vw;
+            height: 80vw;
+            margin: 12vw auto;
         }
-        iframe{
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
+        html{
+            background: #fff;
+        }
+        body{
+            background: #65e4d3;
+            background-image: url(tree.png),url(bg.png);
+            background-position: left 35vw,0 0;
+            background-repeat: no-repeat;
+            background-size: 32%,100%;
+            text-align: center;
+        }
+        .blue{
+
+        }
+        .banner{
+            margin: 5vw auto;
+            width: 90vw;
+        }
+        .start{
+            width: 70vw;
             margin: auto;
-            height: 50%;
-            width: 100%;
         }
+        .input_address_link{
+            margin: 5vw auto;
+            color: #eb4800;
+            font-size: 5vw;
+            width: 100%;
+            display: block;
+        }
+        .list{
+            width: 100%;
+            height: auto;
+            padding-top: 5vw;
+            background: #fff;
+        }
+        h2{
+            margin: 5vw auto;
+            color: #eb4800;
+            font-size: 6vw;
+            width: 100%;
+            display: block;
+        }
+
     </style>
 </head>
 <body>
+<img class="banner" src="banner.png" alt=""/>
 <canvas id="canvas" class="canvas"></canvas>
+<img class="start" id="start" src="start.png" alt=""/>
+<a class="input_address_link" href="">填写收获地址</a>
+<div class="list">
+    <h2>获奖名单</h2>
+</div>
 </body>
 </html>
