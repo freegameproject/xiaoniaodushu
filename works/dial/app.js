@@ -39,9 +39,9 @@ window.onload = function () {
         draw(img, {x: c_w / 2, y: c_h / 2}, c_w, c_h);//绘制正常区域
         c.save();
 
-        step=parseFloat(step);
+        step = parseFloat(step);
 
-        console.log("step:"+step);
+        console.log("step:" + step);
         //旋转指针区域
 
         switch (maxDegree) {
@@ -65,25 +65,25 @@ window.onload = function () {
                 //console.log(1-degree/maxDegree);
 
 
-                if(degree+360>=maxDegree){
+                if (degree + 360 >= maxDegree) {
 
-                }else{
-                    step-=0.1;
-                    if(step<=1){
-                        step=1;
+                } else {
+                    step -= 0.1;
+                    if (step <= 1) {
+                        step = 1;
                     }
                 }
-                if(step<=0.01){
-                    step=0.01;
+                if (step <= 0.01) {
+                    step = 0.01;
                 }
                 degree += step;
-                console.log(degree+"/"+maxDegree);
+                console.log(degree + "/" + maxDegree);
                 if (degree >= maxDegree) {
                     stop();
                 }
 
         }
-        degree=Math.floor(degree);
+        degree = Math.floor(degree);
         c.translate(c_w / 2, c_h / 2);//重置0,0坐标点
         c.rotate(degree * Math.PI / 180);
         draw(zz, {x: 0, y: 0}, c_w, c_h);
@@ -95,23 +95,50 @@ window.onload = function () {
     draw(img, {x: c_w / 2, y: c_h / 2}, c_w, c_h);
     draw(zz, {x: c_w / 2, y: c_h / 2}, c_w, c_h);
 
+    function success(){
+        //中奖
+        console.log('中奖');
+    }
+
+    function unsuccess(){
+        //没中奖
+        console.log('没中奖');
+    }
     function start() {
         requestID = window.requestAnimationFrame(loop);
     }
 
     function stop() {
         window.cancelAnimationFrame(requestID);
-        requestID=0;
-        setTimeout(function(){
-            alert(initm);
+        requestID = 0;
 
-            if (initm > 0 && initm < 30) {
-                alert("中奖啦，恭喜你！");
-            } else {
-                alert("对不起，没有中奖");
+
+        setTimeout(function () {
+            console.log(initm);
+            switch (true) {
+                case (initm>330 && initm<360):
+                    unsuccess();
+                    break;
+                case (initm>0 && initm<30):
+                    unsuccess();
+                    break;
+                case (initm>30 && initm<90):
+                    success();
+                    break;
+                case (initm>90 && initm<150):
+                    unsuccess();
+                    break;
+                case (initm>150 && initm<210):
+                    success();
+                    break;
+                case (initm>210 && initm<270):
+                    unsuccess();
+                    break;
+                case (initm>270 && initm<330):
+                    success();
+                    break;
             }
-        },1000);
-
+        }, 1000);
 
 
     }
@@ -123,12 +150,12 @@ window.onload = function () {
     }
 
     /* init */
-    requestID=0;
+    requestID = 0;
     step = 1;
     degree = 0;
     maxDegree = 0;
     document.getElementById("start").addEventListener('click', function () {
-        if(requestID===0){
+        if (requestID === 0) {
             step = 0.1;
             degree = initm;
             maxDegree = 0;
@@ -136,9 +163,53 @@ window.onload = function () {
                 degree = degree
             }
             start();
-            setTimeout(function(){
-                setMax(Math.floor(Math.random()*360));
-            },1000);
+
+            //模拟ajax 返回数据
+            setTimeout(function () {
+
+                //根据360度的角度判断 是否中奖
+
+                //1-6 转盘，转化为 随机角度
+
+                //ajax 传递过来的 值 赋予 mun
+                var num = Math.floor(Math.random() * 6 + 1);
+
+
+                var jd = 0;//角度
+                switch (num) {
+                    case 1:
+                        var r = Math.floor(Math.random() * 2);
+                        switch (r) {
+                            case 0:
+                                //330-360
+                                jd = Math.floor(Math.random() * (60 - 1) + (330 + 1));
+                                break;
+                            case 1:
+                                jd = Math.floor(Math.random() * (60 - 1) + (0 + 1));
+                                break;
+                        }
+                        break;
+                    case 2:
+                        jd = Math.floor(Math.random() * (60 - 1) + (30 + 1));
+                        break;
+                    case 3:
+                        jd = Math.floor(Math.random() * (60 - 1) + (90 + 1));
+                        break;
+                    case 4:
+                        jd = Math.floor(Math.random() * (60 - 1) + (150 + 1));
+                        break;
+                    case 5:
+                        jd = Math.floor(Math.random() * (60 - 1) + (210 + 1));
+                        break;
+                    case 6:
+                        jd = Math.floor(Math.random() * (60 - 1) + (270 + 1));
+                        break;
+                }
+
+                //setMax(Math.floor(Math.random() * 360));
+                console.log(jd);
+                setMax(jd);
+            }, 1000);
         }
 
 
