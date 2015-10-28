@@ -189,10 +189,10 @@ window.onload = function () {
                         switch (r) {
                             case 0:
                                 //330-360
-                                jd = Math.floor(Math.random() * (60 - 1) + (330 + 1));
+                                jd = Math.floor(Math.random() * (30 - 1) + (330 + 1));
                                 break;
                             case 1:
-                                jd = Math.floor(Math.random() * (60 - 1) + (0 + 1));
+                                jd = Math.floor(Math.random() * (30 - 1) + (0 + 1));
                                 break;
                         }
                         break;
@@ -212,6 +212,7 @@ window.onload = function () {
                         jd = Math.floor(Math.random() * (60 - 1) + (270 + 1));
                         break;
                 }
+
 
                 //setMax(Math.floor(Math.random() * 360));
                 console.log(jd);
