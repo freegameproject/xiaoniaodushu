@@ -1,6 +1,6 @@
 var zz = new Image();
 zz.src = 'zz.png';
-window.onload = function () {
+zz.onload = function () {
     var canvas = document.getElementById("canvas");
     c_w = canvas.clientWidth;
     c_h = canvas.clientHeight;
