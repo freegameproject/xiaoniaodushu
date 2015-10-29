@@ -1,18 +1,10 @@
-var zz = new Image();
-zz.src = 'zz.png';
 window.onload = function () {
-    var canvas = document.getElementById("canvas");
-    c_w = canvas.clientWidth;
-    c_h = canvas.clientHeight;
-    canvas.width = c_w;
-    canvas.height = c_h;
-    c = canvas.getContext('2d');
 
 
-    //中心绘制
-    function draw(img, point, width, height) {
-        c.drawImage(img, point.x - width / 2, point.y - height / 2, width, height);
-    }
+
+    var zz=document.getElementById('zz');
+
+
 
     //config
     step = 0;
@@ -27,18 +19,11 @@ window.onload = function () {
 
     function loop(time) {
 
-        c.clearRect(0, 0, canvas.width, canvas.height);
+        //c.clearRect(0, 0, canvas.width, canvas.height);
 
         requestID = window.requestAnimationFrame(loop);
 
-        //degree += step * Math.PI / 180;
 
-
-        c.translate(0, 0);//重置0,0坐标点
-        //draw(img, {x: c_w / 2, y: c_h / 2}, c_w, c_h);//绘制正常区域
-        c.save();
-
-        step = parseFloat(step);
 
         //console.log("step:" + step);
         //旋转指针区域
@@ -82,17 +67,15 @@ window.onload = function () {
 
         }
         degree = Math.floor(degree);
-        c.translate(c_w / 2, c_h / 2);//重置0,0坐标点
-        c.rotate(degree * Math.PI / 180);
-        draw(zz, {x: 0, y: 0}, c_w, c_h);
-        c.restore();
+
+
+        zz.style.webkitTransform="rotate("+degree+"deg)";
 
 
     }
 
 
-    //draw(img, {x: c_w / 2, y: c_h / 2}, c_w, c_h);
-    draw(zz, {x: c_w / 2, y: c_h / 2}, c_w, c_h);
+
 
     function success() {
         //中奖
