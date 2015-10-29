@@ -31,10 +31,8 @@ window.onload = function () {
 
         c.clearRect(0, 0, canvas.width, canvas.height);
 
-        //requestID = window.requestAnimationFrame(loop);
-        requestID = setTimeout(function(){
-            loop();
-        },10);
+        requestID = window.requestAnimationFrame(loop);
+
 
 
 
@@ -118,15 +116,13 @@ window.onload = function () {
     }
 
     start = function () {
-        //requestID = window.requestAnimationFrame(loop);
-        requestID = setTimeout(function(){
-            loop();
-        },10);
+        requestID = window.requestAnimationFrame(loop);
+
     }
 
     stop = function () {
-        //window.cancelAnimationFrame(requestID);
-        clearTimeout(requestID);
+        window.cancelAnimationFrame(requestID);
+
         requestID = 0;
 
 
