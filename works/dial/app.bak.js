@@ -1,5 +1,3 @@
-var img = new Image();
-img.src = 'dial.png';
 var zz = new Image();
 zz.src = 'zz.png';
 window.onload = function () {
@@ -37,7 +35,7 @@ window.onload = function () {
 
 
         c.translate(0, 0);//重置0,0坐标点
-        draw(img, {x: c_w / 2, y: c_h / 2}, c_w, c_h);//绘制正常区域
+        //draw(img, {x: c_w / 2, y: c_h / 2}, c_w, c_h);//绘制正常区域
         c.save();
 
         step = parseFloat(step);
@@ -93,7 +91,7 @@ window.onload = function () {
     }
 
 
-    draw(img, {x: c_w / 2, y: c_h / 2}, c_w, c_h);
+    //draw(img, {x: c_w / 2, y: c_h / 2}, c_w, c_h);
     draw(zz, {x: c_w / 2, y: c_h / 2}, c_w, c_h);
 
     function success() {
