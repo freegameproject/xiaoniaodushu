@@ -66,8 +66,8 @@ window.onload = function () {
                     step -= 0.5;
                 }
 
-                if (step < 1) {
-                    step = 1;
+                if (step < 2) {
+                    step = 2;
                 }
                 degree += step;
 
