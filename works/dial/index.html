@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title></title>
     <script src="app.js"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <style>
         *{
             padding: 0;
@@ -76,11 +77,20 @@
             flex-flow: column;
             display:none;
         }
+        .half{
+            position: absolute;
+            top: 50vw;
+            bottom: 0;
+            left: 50vw;
+            right: 0;
+        }
         .alert_window{
-            margin: auto;
-            width: 50vw;
-            height: auto;
             display:none;
+            width: 60vw;
+            height: auto;
+            position: absolute;
+            top: -25%;
+            left: -50%;
         }
     </style>
 </head>
@@ -98,11 +108,13 @@
     </li>
 </div>
 <div id="alert" class="alert">
-    <div id="success" class="alert_window">
-        <img src="alert_success.png" height="100%" alt=""/>
-    </div>
-    <div id="unsuccess" class="alert_window">
-        <img src="alert_unsuccess.png" height="100%" alt=""/>
+    <div class="half">
+        <div id="success" class="alert_window">
+            <img src="alert_success.png" width="100%" alt=""/>
+        </div>
+        <div id="unsuccess" class="alert_window">
+            <img src="alert_unsuccess.png" width="100%" alt=""/>
+        </div>
     </div>
 </div>
 </body>

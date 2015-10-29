@@ -42,7 +42,7 @@ window.onload = function () {
 
         step = parseFloat(step);
 
-        console.log("step:" + step);
+        //console.log("step:" + step);
         //旋转指针区域
 
         switch (maxDegree) {
@@ -73,14 +73,14 @@ window.onload = function () {
                 }
                 degree += step;
 
-                console.log("step:" + step);
+                //console.log("step:" + step);
 
                 if (degree >= maxDegree) {
                     degree = maxDegree;
                     stop();
                 }
 
-                console.log(degree + "/" + maxDegree);
+                //console.log(degree + "/" + maxDegree);
 
         }
         degree = Math.floor(degree);
@@ -88,6 +88,7 @@ window.onload = function () {
         c.rotate(degree * Math.PI / 180);
         draw(zz, {x: 0, y: 0}, c_w, c_h);
         c.restore();
+
 
     }
 
@@ -173,12 +174,15 @@ window.onload = function () {
     }
     document.getElementById("start").addEventListener('click', function () {
 
-        padding = 5;
-        step = 1;
-        maxDegree = 0;
-        is_max_step = 0;//没有达到最大速度
-        if (requestID === 0) {
 
+
+
+        if (requestID === 0) {
+            padding = 5;
+            step = 1;
+            maxDegree = 0;
+            is_max_step = 0;//没有达到最大速度
+            console.log('start')
             degree = initm;
             maxDegree = 0;
             if (degree > 360) {
@@ -194,6 +198,7 @@ window.onload = function () {
                 //1-6 转盘，转化为 随机角度
 
                 //ajax 传递过来的 值 赋予 mun
+                /*
                 var num = Math.floor(Math.random() * 6 + 1);
 
 
@@ -226,12 +231,12 @@ window.onload = function () {
                     case 6:
                         jd = Math.floor(Math.random() * (60 - padding) + (270 + padding));
                         break;
-                }
+                }*/
 
 
-                //setMax(Math.floor(Math.random() * 360));
-                console.log(jd);
-                setMax(jd);
+                setMax(Math.floor(Math.random() * 360));
+                //console.log(jd);
+                //setMax(jd);
             }, 3000);
         }
 
