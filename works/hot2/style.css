@@ -586,3 +586,23 @@ p {
     width: 20vw;
     left: 0vw;
 }
+
+.wx_qrcode_bg {
+     position: fixed;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     background-color: rgba(0,0,0,0.8);
+    display: none;
+ }
+.wx_qrcode {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+}
