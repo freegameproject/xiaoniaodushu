@@ -11,30 +11,16 @@ html {
     */
 }
 
-body {
-    background: url("img/bg.png");
-    background-position: 46vw 0;
-    background-repeat: no-repeat;
-    background-size: 40vw;
-}
-
-.nav {
-    width: 100vw;
-    height: 9vw;
-    overflow: hidden;
-}
-
 .bc {
-    max-width: 67vw;
-    margin: auto;
+    max-width: 67%;
+    margin: 20px auto;
 }
 
 .logo {
 }
 
 .logo_img {
-    height: 4vw;
-    margin-top: 2.5vw;
+
 }
 
 .flex {
@@ -42,57 +28,23 @@ body {
 }
 
 .banner {
-    width: 100%;
-    height: 37.5vw;
-    background: #f19149;
-    background-image: url("img/banner_left.png");
-    background-size: auto 100%;
-    background-repeat: no-repeat;
+    margin: auto;
     position: relative;
 }
 
 .download {
-    width: 11vw;
+    width: 11%;
     position: absolute;
-    left: 29.7vw;
-    top: 14.8vw;
+    left: 29.7%;
+    top: 40%;
+    text-align: center;
 }
 
-.download_ios {
-    width: 8vw;
-    height: 3vw;
-    padding: 0 1vw 0 1vw;
-    line-height: 3vw;
-    text-align: right;
-    margin: 0.8vw auto;
-    background: #fff;
-    display: block;
-    border-radius: 2vw;
-    text-decoration: none;
-    color: #f19149;
-    background-image: url(img/download_ios.png);
-    background-repeat: no-repeat;
-    background-position: 1vw 0.4vw;
-    background-size: 17%;
+.download_ios, .download_android {
 
-}
-
-.download_android {
-    width: 8vw;
-    height: 3vw;
-    padding: 0 1vw 0 1vw;
-    line-height: 3vw;
-    text-align: right;
-    margin: 0.8vw auto;
-    background: #fff;
+    margin: 10px auto;
     display: block;
-    border-radius: 2vw;
-    text-decoration: none;
-    color: #f19149;
-    background-image: url(img/download_android.png);
-    background-repeat: no-repeat;
-    background-position: 1vw 0.4vw;
-    background-size: 17%;
+
 }
 
 .qrcode {
@@ -101,30 +53,19 @@ body {
 
 .download_title {
     text-align: center;
-    font-size: 0.5vw;
+    font-size: 16px;
     color: #fff;
+    margin: 10px auto;
 }
 
-.phone {
-    width: 22vw;
-    border: none;
-    position: absolute;
-    left: 54.5vw;
-    top: -6vw;
-    bottom: -3.5vw;
-    background: url("img/phone.png");
-    background-size: 100%;
-    background-repeat: no-repeat;
-}
+
 
 .window {
     position: absolute;
-    width: 87%;
-    left: 7%;
-    top: 13%;
-    height: 72%;
-    background-color: #000;
-    border-radius: 0.5vw;
+    width: 20%;
+    left: 56%;
+    top: 17%;
+    height: 71%;
     overflow: hidden;
 }
 
@@ -141,50 +82,25 @@ body {
     clear: none;
 }
 
-/*
-.phone:before{
-    width: 20vw;
-    border: none;
-    position: absolute;
-    left: 1vw;
-    top: 1vw;
-    bottom: -1vw;至于什么是朴门农艺
-    content: '';
-    display: block;
-    background: rgba(0,0,0,0.2);
-    border-radius: 4vw;
-    -webkit-filter: blur(0.5vw);
-}
-
-
-.phone:after{
-    width: 20vw;
-    border: none;
-    position: absolute;
-    left: 0vw;
-    top: 0vw;
-    bottom: 0vw;
-    content: '';
-    display: block;
-    background: url("img/phone.png");
-    background-size: 100%;
-}
-*/
 .media_say {
-    position: relative;
-    width: 100%;
-    height: 20vw;
+
+    height: auto;
     overflow: hidden;
-    margin-top: 8vw;
+    margin: 50px auto;
+    display: flex;
+    flex-flow: row;
+}
+
+.left, .right {
+    width: 50%;
+    height: auto;
 }
 
 .info {
-    position: absolute;
-    width: 30vw;
-    height: 20vw;
+    width: 90%;
+    height: auto;
     background: #fff;
     justify-content: inherit;
-    left: 13.5vw;
     font-size: 12px;
     line-height: 1.3em;
 }
@@ -196,25 +112,21 @@ body {
 }
 
 p {
-    margin-bottom: 1.5vw;
-
+    margin-bottom: 15px;
 }
 
 .followUs {
-    position: absolute;
-    width: 15vw;
-    height: 2vw;
-    top: 16.5vw;
-    right: 58vw;
+    width: 40%;
+    height: auto;
     background: #f5f5f5;
-    border-radius: 1.5vw;
-    padding: 0.5vw;
+    border-radius: 20px;
+    padding: 5px;
     display: flex;
     flex-flow: row;
     align-items: center;
     justify-content: space-around;
     font-size: 14px;
-
+    margin: auto;
 }
 
 .click_to_follow_wb {
@@ -227,15 +139,18 @@ p {
     cursor: pointer;
 }
 
-.links {
-    position: absolute;
-    width: 45vw;
-    height: 20vw;
-    right: 8.4vw;
+.right {
     background-image: url(img/media_bg.png);
-    background-position: right 13.9vw;
+    background-position: right bottom;
     background-repeat: no-repeat;
     background-size: 15%;
+
+}
+
+.links {
+    width: 100%;
+    height: auto;
+
     font-size: 13px;
 }
 
@@ -262,9 +177,9 @@ p {
 }
 
 .footer {
-    margin: 2vw auto;
-    padding-top: 1vw;
-    border-top: solid #f5f5f5 0.2vw;
+    margin: 20px auto;
+    padding-top: 10px;
+    border-top: solid #f5f5f5 2px;
     width: 100%;
     height: auto;
     font-size: 12px;
@@ -571,31 +486,32 @@ p {
 
 .t1 {
     position: absolute;
-    top: -10vw;
-    font-size: 3vw;
+    top: 22%;
+    font-size: 45px;
     color: #fff;
-    left: -4vw;
-    width: 30vw;
+    left: 25%;
+    width: 30%;
 }
 
 .t2 {
     position: absolute;
-    top: -5vw;
+    top: 33%;
     color: #fff;
-    font-size: 18px;
-    width: 20vw;
-    left: 0vw;
+    font-size: 28px;
+    width: 30%;
+    left: 30%;
 }
 
 .wx_qrcode_bg {
-     position: fixed;
-     top: 0;
-     left: 0;
-     right: 0;
-     bottom: 0;
-     background-color: rgba(0,0,0,0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
     display: none;
- }
+}
+
 .wx_qrcode {
     position: absolute;
     top: 0;
