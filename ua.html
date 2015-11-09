@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="ua"></div>
+</body>
+<script>
+    ;
+    (function () {
+        var ua = navigator.userAgent;
+        console.log(ua);
+        document.getElementById('ua').innerHTML = ua;
+        var s = '';
+        //latform
+        switch (true) {
+            case (ua.match(/Mobile/) != null):
+                document.getElementById('Platform').innerHTML = 'Mobile';
+                break;
+        }
+        //os
+        switch (true) {
+            case((s = ua.match(/(Mac).*\s([\d_]+)/)) != null):
+                document.getElementById('Platform').innerHTML = 'PC';
+                document.getElementById('os').innerHTML = 'Mac / ' + s[2];
+                break;
+            case((s = ua.match(/Android.([\d.]+)/)) != null):
+                document.getElementById('Platform').innerHTML = 'Android(mobile)';
+                document.getElementById('os').innerHTML = 'Android / ' + s[1];
+                break;
+
+            case((s = ua.match(/iPhone.*[\s]([\d_.]+)/)) != null):
+                //document.getElementById('Platform').innerHTML='iPhone';
+                document.getElementById('os').innerHTML = 'iPhone / ' + s[1];
+                break;
+            case((s = ua.match(/iPad.*[\s]([\d_.]+)/)) != null):
+                //document.getElementById('Platform').innerHTML='iPhone';
+                document.getElementById('os').innerHTML = 'iPad / ' + s[1];
+                break;
+            case((s = ua.match(/PlayBook.*[\s]([\d_.]+)/)) != null):
+                document.getElementById('Platform').innerHTML = 'BlackBerry(mobile)';
+                document.getElementById('os').innerHTML = 'PlayBook / ' + s[1];
+                break;
+            case((s = ua.match(/BB10/)) != null):
+                document.getElementById('Platform').innerHTML = 'BlackBerry Z30(mobile)';
+                document.getElementById('os').innerHTML = 'BB10';
+                break;
+            case((s = ua.match(/Lumia 520/)) != null):
+                document.getElementById('Platform').innerHTML = 'Lumia 520 (mobile)';
+                var ss = '';
+                switch (true) {
+                    case ((ss = ua.match(/Windows Phone..../)) != null):
+                        document.getElementById('os').innerHTML = ss;
+                        break;
+                }
+                break;
+        }
+        //kernel
+        switch (true) {
+            case((s = ua.match(/Web[kK]it[\/]([\d.]+)/)) != null):
+                console.log('webkit : ' + s[1]);
+                document.getElementById('browser').innerHTML = 'webkit : ' + s[1];
+                break;
+        }
+
+        //browser
+        switch (true) {
+            //有先后顺序
+            case((s = ua.match(/OPR[\/]([\d.]+)/)) != null):
+                document.getElementById('browser').innerHTML = 'Opera / ' + s[1];
+                break;
+            case((s = ua.match(/Chrome[\/]([\d.]+)/)) != null):
+                document.getElementById('browser').innerHTML = 'Chrome / ' + s[1];
+                break;
+            case((s = ua.match(/NokiaBrowser[\/]([\d.]+)/)) != null):
+                document.getElementById('browser').innerHTML = 'NokiaBrowser / ' + s[1];
+                document.getElementById('os').innerHTML = 'NokiaN9';
+                document.getElementById('Platform').innerHTML = 'NokiaN9(mobile)';
+                break;
+            case((s = ua.match(/CriOS[\/]([\d.]+)/)) != null):
+                document.getElementById('browser').innerHTML = 'Chrome / ' + s[1];
+                break;
+            case((s = ua.match(/MicroMessenger[\/]([\d.]+)/)) != null):
+                document.getElementById('browser').innerHTML = 'MicroMessenger / ' + s[1];
+                break;
+            case((s = ua.match(/Safari[\/]([\d.]+)/)) != null):
+                document.getElementById('browser').innerHTML = 'Safari / ' + s[1];
+                break;
+            case((s = ua.match(/IEMobile\/(\d...)/)) != null):
+                document.getElementById('browser').innerHTML = 'IEMobile / ' + s[1];
+                break;
+        }
+        console.log('end');
+    })();
+</script>
+</html>
