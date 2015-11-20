@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=2.0,maximum-scale=1,user-scalable=no">
+    <script src="../../js/jquery-2.1.1.min.js"></script>
+    <title></title>
+    <meta name="description"
+          content="">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .btn {
+            padding: 5px;
+            background: #ccc;
+            color: #000;
+            background: url("img/select_btn.png");
+            background-size: 100% 100%;
+            height: 40px;
+            line-height: 40px;
+            width: 80%;
+            margin: 15px auto;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .select_btn {
+
+        }
+
+        .ask_info, .ask_title {
+            text-align: center;
+            width: 100%;
+            display: none;
+        }
+
+        .welcome, .select_role, .asks, .finish {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background: none;
+        }
+
+        body {
+            background: url("img/bg.png");
+            background-size: cover;
+            background-position: bottom center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+
+        }
+
+        .welcome {
+            background: url("img/welcome.png");
+            background-size: cover;
+            background-position: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .finish {
+            background: url("img/over.png");
+            background-size: 100% 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .replay {
+            width: 200px;
+            height: 40px;
+            margin: auto;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 12%;
+
+        }
+
+        .ask_btn_start {
+            width: 50px;
+            height: auto;
+            width: 50px;
+            height: auto;
+            position: absolute;
+            left: 10%;
+            top: 55%;
+        }
+
+        .role_btn {
+
+        }
+
+        .role_select_title,h3{
+            font-size: 30px;
+            text-align: center;
+            margin: 20px auto;
+            display: block;
+            line-height: 1.2em;
+        }
+
+        img {
+            width: 100%;
+        }
+        .testicon{
+            margin: 20px auto;
+            width: 30%;
+        }
+        .testicon {
+            margin: 20px auto;
+            width: 30%;
+            height: auto;
+            position: relative;
+            text-align: center;
+        }
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 20px;
+            margin: auto;
+            text-align: center;
+        }
+        .test_text{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 20px;
+            margin: auto;
+            text-align: center;
+            font-size: 20px;
+        }
+        .msg {
+            position: fixed;
+            top: 15%;
+            left: 47%;
+            right: 45%;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+<div class="welcome">
+    <div class="ask_title"></div>
+    <div class="ask_info"></div>
+    <div class="ask_btn_start"><img src="img/start_btn.png" alt="开始测试"/></div>
+</div>
+<div class="select_role">
+    <div class="testicon">
+        <img src="img/test.png" alt=""/>
+        <div class="test_text">测</div>
+    </div>
+    <div class="role_select_title"></div>
+    <div class="select_role_btn_area"></div>
+</div>
+
+<div class="asks"></div>
+
+<div class="finish">
+    <div class="msg"></div>
+    <div class="replay">
+        <img src="img/replay.png" alt="重新测试"/>
+    </div>
+</div>
+
+<div class="loading">
+    <div class="logo">
+
+    </div>
+</div>
+</body>
+<script>
+
+    var ask = {
+        fs: 0,//总分数初始化为0
+        ask_type: 0,//0:分数累计  1:判断对错  value 1时正确 0时错误
+        //ask_welcome: true,//需要欢迎页
+        ask_title: "测测你是《琅琊榜》里的哪个人物？",
+        ask_info: "<p>遥映人间冰雪样，</p><p>暗香幽浮曲临江，</p><p>遍识天下英雄路，</p><p>俯首江左有梅郎。</p>",
+        user_role: 0,//用户选择的
+        ask_role: {
+            user_role: '',//用户选择的角色
+            title: "请选择您的性别",
+            roles: [
+                {
+                    role_name: "女",
+                    role_value: 0
+                },
+                {
+                    role_name: "男",
+                    role_value: 1
+                }
+            ]
+        },
+        //分数测试
+        fs_check: [
+            //女 分数范围
+            [
+                {
+                    min: 9,
+                    max: 13,
+                    msg: "宇文念"
+                },
+                {
+                    min: 14,
+                    max: 17,
+                    msg: "誉王妃"
+                },
+                {
+                    min: 18,
+                    max: 21,
+                    msg: "夏冬"
+                },
+                {
+                    min: 22,
+                    max: 25,
+                    msg: "静妃"
+                },
+                {
+                    min: 26,
+                    max: 29,
+                    msg: "秦般弱"
+                },
+                {
+                    min: 30,
+                    max: 33,
+                    msg: "霓凰郡主"
+                },
+                {
+                    min: 34,
+                    max: 37,
+                    msg: "宫羽"
+                },
+                {
+                    min: 38,
+                    max: 41,
+                    msg: "莅阳长公主"
+                },
+                {
+                    min: 42,
+                    max: 43,
+                    msg: "四姐"
+                },
+                {
+                    min: 44,
+                    max: 44,
+                    msg: "越贵妃"
+                },
+                {
+                    min: 45,
+                    max: 45,
+                    msg: "言皇后"
+                }
+            ],
+            //男 分数范围
+            [
+                {
+                    min: 9,
+                    max: 10,
+                    msg: "穆青"
+                },
+                {
+                    min: 11,
+                    max: 12,
+                    msg: "言侯"
+                },
+                {
+                    min: 13,
+                    max: 14,
+                    msg: "夏江"
+                },
+                {
+                    min: 15,
+                    max: 16,
+                    msg: "甄平"
+                },
+                {
+                    min: 17,
+                    max: 18,
+                    msg: "黎纲"
+                },
+                {
+                    min: 19,
+                    max: 20,
+                    msg: "蒙挚"
+                },
+                {
+                    min: 21,
+                    max: 22,
+                    msg: "飞流"
+                },
+                {
+                    min: 23,
+                    max: 24,
+                    msg: "萧景睿"
+                },
+                {
+                    min: 25,
+                    max: 26,
+                    msg: "靖王"
+                },
+                {
+                    min: 27,
+                    max: 28,
+                    msg: "蔺晨"
+                },
+                {
+                    min: 29,
+                    max: 30,
+                    msg: "言豫津"
+                },
+                {
+                    min: 31,
+                    max: 32,
+                    msg: "梅长苏"
+                },
+                {
+                    min: 33,
+                    max: 34,
+                    msg: "誉王"
+                },
+                {
+                    min: 35,
+                    max: 36,
+                    msg: "太子"
+                },
+                {
+                    min: 37,
+                    max: 38,
+                    msg: "谢玉"
+                },
+                {
+                    min: 39,
+                    max: 40,
+                    msg: "列战英"
+                },
+                {
+                    min: 41,
+                    max: 42,
+                    msg: "童路"
+                },
+                {
+                    min: 43,
+                    max: 45,
+                    msg: "高湛"
+                }
+            ],
+        ],
+        ask_items: [
+            {
+                item_title: "如果你可以出现在武侠小说中，你希望自己的身份是？",
+                item_select: [
+                    {
+                        select_title: "A:富二代",
+                        select_value: 1
+                    },
+                    {
+                        select_title: "B:蠢萌且高智商的人",
+                        select_value: 5
+                    },
+                    {
+                        select_title: "C:神秘黑衣人",
+                        select_value: 4
+                    },
+                    {
+                        select_title: "D:孤儿",
+                        select_value: 2
+                    },
+                    {
+                        select_title: "E:杀手",
+                        select_value: 3
+                    }
+                ]
+            },
+            {
+                item_title: "你会为自己选择什么样的兵器？",
+                item_select: [
+                    {
+                        select_title: "A:剑",
+                        select_value: 5
+                    },
+                    {
+                        select_title: "B:刀",
+                        select_value: 4
+                    },
+                    {
+                        select_title: "C:砖",
+                        select_value: 3
+                    },
+                    {
+                        select_title: "D:酒坛子",
+                        select_value: 2
+                    },
+                    {
+                        select_title: "E:暗器",
+                        select_value: 1
+                    }
+                ]
+            },
+            {
+                item_title: "你希望首次出场是在……？",
+                item_select: [
+                    {
+                        select_title: "A:房顶上",
+                        select_value: 2
+                    },
+                    {
+                        select_title: "B:武林大会",
+                        select_value: 3
+                    },
+                    {
+                        select_title: "C:酒馆",
+                        select_value: 5
+                    },
+                    {
+                        select_title: "D:湖面上",
+                        select_value: 1
+                    },
+                    {
+                        select_title: "E:牢狱中",
+                        select_value: 4
+                    }
+                ]
+            },
+            {
+                item_title: "跌落山崖后，你最想得到的宝物是……？",
+                item_select: [
+                    {
+                        select_title: "A:武功秘籍",
+                        select_value: 3
+                    },
+                    {
+                        select_title: "B:续命八丸",
+                        select_value: 2
+                    },
+                    {
+                        select_title: "C:金丝软甲",
+                        select_value: 5
+                    },
+                    {
+                        select_title: "D:挽云宝弓",
+                        select_value: 1
+                    },
+                    {
+                        select_title: "E:灭城毒",
+                        select_value: 4
+                    }
+                ]
+            },
+            {
+                item_title: "你觉得行走江湖，最放不下的是？",
+                item_select: [
+                    {
+                        select_title: "A:亲爹",
+                        select_value: 5
+                    },
+                    {
+                        select_title: "B:亲娘",
+                        select_value: 4
+                    },
+                    {
+                        select_title: "C:大湿兄/小湿妹",
+                        select_value: 2
+                    },
+                    {
+                        select_title: "D:好基友",
+                        select_value: 1
+                    },
+                    {
+                        select_title: "E:师父",
+                        select_value: 3
+                    }
+                ]
+            },
+            {
+                item_title: "一定要牺牲的话，你最大限度能够牺牲自己的…？",
+                item_select: [
+                    {
+                        select_title: "A:容貌",
+                        select_value: 3
+                    },
+                    {
+                        select_title: "B:武功",
+                        select_value: 4
+                    },
+                    {
+                        select_title: "C:钱财",
+                        select_value: 1
+                    },
+                    {
+                        select_title: "D:身份",
+                        select_value: 2
+                    },
+                    {
+                        select_title: "E:尊严",
+                        select_value: 5
+                    }
+                ]
+            },
+            {
+                item_title: "江湖不都是打打杀杀，闲的时候你想...？",
+                item_select: [
+                    {
+                        select_title: "A:邀江湖朋友，湖边唱K",
+                        select_value: 1
+                    },
+                    {
+                        select_title: "B:健身",
+                        select_value: 3
+                    },
+                    {
+                        select_title: "C:研究菜谱",
+                        select_value: 5
+                    },
+                    {
+                        select_title: "D:逛市集，买买买",
+                        select_value: 2
+                    },
+                    {
+                        select_title: "E:出国旅游",
+                        select_value: 4
+                    }
+                ]
+            },
+            {
+                item_title: "你觉得哪类人不适合行走江湖...？",
+                item_select: [
+                    {
+                        select_title: "A:胖",
+                        select_value: 5
+                    },
+                    {
+                        select_title: "B:话唠",
+                        select_value: 4
+                    },
+                    {
+                        select_title: "C:残疾人",
+                        select_value: 3
+                    },
+                    {
+                        select_title: "D:文盲",
+                        select_value: 2
+                    },
+                    {
+                        select_title: "E:单身狗",
+                        select_value: 1
+                    }
+                ]
+            },
+            {
+                item_title: "退隐江湖后，你最想做的是？",
+                item_select: [
+                    {
+                        select_title: "A:开潮牌店，创业",
+                        select_value: 1
+                    },
+                    {
+                        select_title: "B:当艺术家",
+                        select_value: 3
+                    },
+                    {
+                        select_title: "C:学厨师",
+                        select_value: 5
+                    },
+                    {
+                        select_title: "D:开驾校，教人骑马",
+                        select_value: 2
+                    },
+                    {
+                        select_title: "E:身手好，当保安",
+                        select_value: 4
+                    }
+                ]
+            }
+        ]
+    };
+
+
+    function init() {
+
+        ask.fs = 0;
+        ask.user_role = null;
+
+        $('.select_role_btn_area').html('');
+        $('.asks').html('');
+
+        $('.select_role').hide();
+        $('.ask').hide();
+        $('.asks').hide();
+        $('.finish').hide();
+        $('.welcome').show();
+
+        var last_item_num = ask.ask_items.length;//最后一道题  也是题目的数量
+        var this_item = 1;//当前的题
+
+        if (ask.ask_role.roles.length > 1) {
+            //选择角色
+
+
+            $('.role_select_title').text(ask.ask_role.title);
+
+            ask.ask_role.roles.map(function (role) {
+                $('<div class="role_btn btn"></div>').attr('role_value', role.role_value).text(role.role_name).click(function () {
+
+                    ask.user_role = $(this).attr('role_value');
+
+
+                    $('.asks').show();
+                    $('.ask').hide();
+                    $('.select_role').hide();
+                    $('#ask_1').show();
+                }).appendTo($('.select_role_btn_area'));
+            });
+        } else {
+            //不用选择角色
+        }
+
+        $('.ask_title').text(ask.ask_title);
+        $(document).attr('title', ask.ask_title);
+
+        $('.ask_info').html(ask.ask_info);
+
+        //遍历问题
+        ask.ask_items.map(function (item, index, arr) {
+
+            var this_num = index + 1;//本题
+            var title = item.item_title;
+
+            var divask = $('<div id="ask_' + this_num + '" class="ask"></div>');
+
+
+            $('<h3></h3>').text(title).appendTo(divask);
+
+
+            var item_page= $('<div class="testicon"></div>');
+
+            $('<img src="img/test.png" alt=""/>').appendTo(item_page);
+
+            $('<div class="page"></div>').text(this_num + "／" + arr.length).appendTo(item_page);
+
+            item_page.appendTo(divask);
+
+
+            //遍历选项
+            item.item_select.map(function (select) {
+
+                $('<div class="select_btn btn"></div>').text(select.select_title).attr('num', this_num).attr('is_last', this_num === arr.length).attr('value', select.select_value).appendTo(divask);
+
+            });
+
+
+            divask.appendTo($('.asks'));
+
+        });
+
+        $('.welcome').show();
+
+        //开始答题
+        $('.ask_btn_start').click(
+                function () {
+
+                    //隐藏欢迎页
+                    $('.welcome').hide();
+
+
+                    //如果需要选择角色
+                    if (ask.ask_role.roles.length > 1) {
+                        $('.select_role').show();
+                    } else {
+                        //直接显示题目
+                        $('.asks').show();
+                        $('.ask').hide();
+                        $('#ask_1').show();
+                    }
+
+
+                }
+        );
+
+
+        //回答题目时
+        $('.select_btn').click(function () {
+
+            var this_num = parseInt($(this).attr('num'));
+            var next_num = this_num + 1;
+
+            var is_last = $(this).attr('is_last') === "true";
+
+            switch (ask.ask_type) {
+                case 0:
+                    //分数累加
+                    ask.fs += parseInt($(this).attr('value'));
+
+                    //测试题是否全部结束
+                    if (is_last) {
+                        $('.ask').hide();
+                        $('.asks').hide();
+
+                        ask.fs_check[ask.user_role].map(function (check_fs) {
+                            if (ask.fs >= check_fs.min && ask.fs <= check_fs.max) {
+                                //$('.msg').html('你的分数是：' + ask.fs + '<p>' + check_fs.msg + '</p>');
+                                $('.msg').text(check_fs.msg);
+                                $('description').attr('content', '我是' + check_fs.msg + '，测测你是《琅琊榜》里的哪个人物？');
+                                $(document).attr('title', '我是' + check_fs.msg + '，测测你是《琅琊榜》里的哪个人物？');
+                                //break;
+                            }
+                        });
+
+
+                        $('.finish').show();
+                    } else {
+                        $('.ask').hide();
+                        $('#ask_' + next_num).show();
+                    }
+
+                    break;
+                case 1:
+                    //判断对错
+                    if (parseInt($(this).attr('value')) === 1) {
+                        //回答正确
+                        ask.fs += 1;
+                    } else {
+                        //回答错误
+
+                        //给出正确的，然后间隔1秒钟，下一道题。
+                    }
+                    break;
+            }
+
+        });
+
+
+        //重新答题
+        $('.replay').click(function () {
+            init();
+        });
+
+    }
+
+    $(document).ready(function () {
+        init();
+    });
+</script>
+</html>
