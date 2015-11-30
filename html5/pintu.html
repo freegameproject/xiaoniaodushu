@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=2.0,maximum-scale=1,user-scalable=no">
+    <title></title>
+    <style>
+        .canvas {
+            width: 300px;
+            height: 300px;
+            margin: auto;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: #ccc;
+        }
+
+        .obj {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            transition: all 0.5s;
+        }
+
+        .obj[at=map_11] {
+            top: 0px;
+            left: 0px;
+        }
+
+        .obj[at=map_12] {
+            top: 0px;
+            left: 100px;
+        }
+
+        .obj[at=map_13] {
+            top: 0px;
+            left: 200px;
+        }
+
+        .obj[at=map_21] {
+            top: 100px;
+            left: 0px;
+        }
+
+        .obj[at=map_22] {
+            top: 100px;
+            left: 100px;
+        }
+
+        .obj[at=map_23] {
+            top: 100px;
+            left: 200px;
+        }
+
+        .obj[at=map_31] {
+            top: 200px;
+            left: 0px;
+        }
+
+        .obj[at=map_32] {
+            top: 200px;
+            left: 100px;
+        }
+
+        .obj[at=map_33] {
+            top: 200px;
+            left: 200px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="canvas">
+    <div class="obj" id="obj_1" at="map_11"></div>
+    <div class="obj" id="obj_2" at="map_12"></div>
+    <div class="obj" id="obj_3" at="map_13"></div>
+    <div class="obj" id="obj_4" at="map_21"></div>
+    <div class="obj" id="obj_5" at="map_22"></div>
+    <div class="obj" id="obj_6" at="map_23"></div>
+    <div class="obj" id="obj_7" at="map_31"></div>
+    <div class="obj" id="obj_8" at="map_32"></div>
+    <div class="obj" id="obj_9" at="map_33"></div>
+</div>
+
+<script>
+    var map = [];
+
+    var yes_map = [1, 2, 3, 4, 5, 6, 7, 8, 0];
+    var random_map = yes_map;
+
+    function start() {
+
+        random_map = yes_map.sort(function (x, y) {
+            return Math.random() > 0.5 ? -1 : 1
+        });
+
+        map[11] = random_map[0];
+        map[12] = random_map[1];
+        map[13] = random_map[2];
+
+        map[21] = random_map[3];
+        map[22] = random_map[4];
+        map[23] = random_map[5];
+
+        map[31] = random_map[6];
+        map[32] = random_map[7];
+        map[33] = random_map[8];
+
+        if (random_map[0] != 0) {
+            document.querySelector('#obj_1').innerText = random_map[0];
+        }
+        if (random_map[1] != 0) {
+            document.querySelector('#obj_2').innerText = random_map[1];
+        }
+        if (random_map[2] != 0) {
+            document.querySelector('#obj_3').innerText = random_map[2];
+        }
+        if (random_map[3] != 0) {
+            document.querySelector('#obj_4').innerText = random_map[3];
+        }
+        if (random_map[4] != 0) {
+            document.querySelector('#obj_5').innerText = random_map[4];
+        }
+        if (random_map[5] != 0) {
+            document.querySelector('#obj_6').innerText = random_map[5];
+        }
+        if (random_map[6] != 0) {
+            document.querySelector('#obj_7').innerText = random_map[6];
+        }
+        if (random_map[7] != 0) {
+            document.querySelector('#obj_8').innerText = random_map[7];
+        }
+        if (random_map[8] != 0) {
+            document.querySelector('#obj_9').innerText = random_map[8];
+        }
+
+
+    }
+
+
+    function left() {
+        check();
+    }
+    function right() {
+        check();
+    }
+    function up() {
+
+        if (map[11] == 0) {
+            map[11] = parseInt(document.querySelector('.obj[at=map_21]').getAttribute('id').replace('obj_', ''));
+            document.querySelector('.obj[at=map_21]').setAttribute('at', 'map_11');
+            map[21] = 0;
+        }
+
+        else if (map[12] == 0) {
+            map[12] = parseInt(document.querySelector('.obj[at=map_22]').getAttribute('id').replace('obj_', ''));
+            document.querySelector('.obj[at=map_22]').setAttribute('at', 'map_12');
+            map[22] = 0;
+        }
+
+        else if (map[13] == 0) {
+            map[13] = parseInt(document.querySelector('.obj[at=map_23]').getAttribute('id').replace('obj_', ''));
+
+            document.querySelector('.obj[at=map_23]').setAttribute('at', 'map_13');
+            map[23] = 0;
+        }
+
+        else if (map[21] == 0) {
+            map[21] = parseInt(document.querySelector('.obj[at=map_31]').getAttribute('id').replace('obj_', ''));
+
+            document.querySelector('.obj[at=map_31]').setAttribute('at', 'map_21');
+            map[31] = 0;
+        }
+
+        else if (map[22] == 0) {
+            map[22] = parseInt(document.querySelector('.obj[at=map_32]').getAttribute('id').replace('obj_', ''));
+
+            document.querySelector('.obj[at=map_32]').setAttribute('at', 'map_22');
+            map[32] = 0;
+        }
+
+        else if (map[23] == 0) {
+            map[23] = parseInt(document.querySelector('.obj[at=map_33]').getAttribute('id').replace('obj_', ''));
+
+            document.querySelector('.obj[at=map_33]').setAttribute('at', 'map_23');
+            map[33] = 0;
+        }
+
+        check();
+    }
+    function down() {
+
+        if (map[31] == 0) {
+            map[31] = parseInt(document.querySelector('.obj[at=map_21]').getAttribute('id').replace('obj_', ''));
+
+            document.querySelector('.obj[at=map_21]').setAttribute('at', 'map_31');
+            map[21] = 0;
+        }
+        else if (map[32] == 0) {
+            map[32] = parseInt(document.querySelector('.obj[at=map_22]').getAttribute('id').replace('obj_', ''));
+
+            document.querySelector('.obj[at=map_22]').setAttribute('at', 'map_32');
+            map[22] = 0;
+
+        }
+        else if (map[33] == 0) {
+            map[33] = parseInt(document.querySelector('.obj[at=map_23]').getAttribute('id').replace('obj_', ''));
+
+            document.querySelector('.obj[at=map_23]').setAttribute('at', 'map_33');
+            map[23] = 0;
+        }
+
+        else if (map[21] == 0) {
+            map[21] = parseInt(document.querySelector('.obj[at=map_11]').getAttribute('id').replace('obj_', ''));
+
+            document.querySelector('.obj[at=map_11]').setAttribute('at', 'map_21');
+            map[11] = 0;
+        }
+        else if (map[22] == 0) {
+            map[22] = parseInt(document.querySelector('.obj[at=map_12]').getAttribute('id').replace('obj_', ''));
+
+            document.querySelector('.obj[at=map_12]').setAttribute('at', 'map_22');
+            map[12] = 0;
+        }
+        else if (map[23] == 0) {
+            map[23] = parseInt(document.querySelector('.obj[at=map_13]').getAttribute('id').replace('obj_', ''));
+
+            document.querySelector('.obj[at=map_13]').setAttribute('at', 'map_23');
+            map[13] = 0;
+        }
+
+        check();
+    }
+
+    function left() {
+        if (map[11] === 0) {
+            map[11] = parseInt(document.querySelector('.obj[at=map_12]').getAttribute('id').replace('obj_', ''));
+            document.querySelector('.obj[at=map_12]').setAttribute('at', 'map_11');
+            map[12] = 0;
+        } else if (map[12] == 0) {
+            map[12] = parseInt(document.querySelector('.obj[at=map_13]').getAttribute('id').replace('obj_', ''));
+            document.querySelector('.obj[at=map_13]').setAttribute('at', 'map_12');
+            map[13] = 0;
+        } else if (map[21] == 0) {
+            map[21] = parseInt(document.querySelector('.obj[at=map_22]').getAttribute('id').replace('obj_', ''));
+            document.querySelector('.obj[at=map_22]').setAttribute('at', 'map_21');
+            map[22] = 0;
+        } else if (map[22] == 0) {
+            map[22] = parseInt(document.querySelector('.obj[at=map_23]').getAttribute('id').replace('obj_', ''));
+            document.querySelector('.obj[at=map_23]').setAttribute('at', 'map_22');
+            map[23] = 0;
+        } else if (map[31] == 0) {
+            map[31] = parseInt(document.querySelector('.obj[at=map_32]').getAttribute('id').replace('obj_', ''));
+            document.querySelector('.obj[at=map_32]').setAttribute('at', 'map_31');
+            map[32] = 0;
+        } else if (map[32] == 0) {
+            map[32] = parseInt(document.querySelector('.obj[at=map_33]').getAttribute('id').replace('obj_', ''));
+            document.querySelector('.obj[at=map_33]').setAttribute('at', 'map_32');
+            map[33] = 0;
+        }
+        check();
+    }
+
+    function right() {
+
+        if (map[13] === 0) {
+            map[13] = parseInt(document.querySelector('.obj[at=map_12]').getAttribute('id').replace('obj_', ''));
+            document.querySelector('.obj[at=map_12]').setAttribute('at', 'map_13');
+            map[12] = 0;
+
+        } else if (map[23] === 0) {
+            map[23] = parseInt(document.querySelector('.obj[at=map_22]').getAttribute('id').replace('obj_', ''));
+            document.querySelector('.obj[at=map_22]').setAttribute('at', 'map_23');
+            map[22] = 0;
+
+        } else if (map[33] === 0) {
+            map[33] = parseInt(document.querySelector('.obj[at=map_32]').getAttribute('id').replace('obj_', ''));
+            document.querySelector('.obj[at=map_32]').setAttribute('at', 'map_33');
+            map[32] = 0;
+        } else if (map[12] === 0) {
+            map[12] = parseInt(document.querySelector('.obj[at=map_11]').getAttribute('id').replace('obj_', ''));
+            document.querySelector('.obj[at=map_11]').setAttribute('at', 'map_12');
+            map[11] = 0;
+
+        } else if (map[22] === 0) {
+            map[22] = parseInt(document.querySelector('.obj[at=map_21]').getAttribute('id').replace('obj_', ''));
+            document.querySelector('.obj[at=map_21]').setAttribute('at', 'map_22');
+            map[21] = 0;
+        } else if (map[32] === 0) {
+            map[32] = parseInt(document.querySelector('.obj[at=map_31]').getAttribute('id').replace('obj_', ''));
+            document.querySelector('.obj[at=map_31]').setAttribute('at', 'map_32');
+            map[31] = 0;
+        }
+        check();
+    }
+
+    function check() {
+
+        if (map[11] === 1 && map[12] === 2 && map[13] === 3 && map[21] === 4 && map[22] === 5 && map[23] === 6 && map[31] === 7 && map[32] === 8 && map[33] === 9) {
+            success();
+        } else {
+            unsuccess();
+        }
+    }
+
+    function success() {
+        console.log('ok');
+        alert('ok');
+
+    }
+
+    function unsuccess() {
+        //console.log('no');
+    }
+
+
+    document.addEventListener('touchstart', function () {
+        event.preventDefault();
+        var touch = event.touches[0]; //获取第一个触点
+        start_x = Number(touch.pageX); //页面触点X坐标
+        start_y = Number(touch.pageY); //页面触点Y坐标
+    });
+    document.addEventListener('touchmove', function () {
+        event.preventDefault();
+        var touch = event.touches[0]; //获取第一个触点
+        end_x = Number(touch.pageX); //页面触点X坐标
+        end_y = Number(touch.pageY); //页面触点Y坐标
+    });
+
+
+    document.addEventListener('touchend', function () {
+        event.preventDefault();
+
+        var zy=start_x-end_x;//左右
+        var sx=start_y-end_y;//上下
+
+        if(Math.abs(zy)>Math.abs(sx)){
+            //zy
+            if(zy>0){
+                left();
+            }
+            if(zy<0){
+                right();
+            }
+
+        }
+
+        if(Math.abs(zy)<Math.abs(sx)){
+            //sx
+            if(sx>0){
+                up();
+            }
+            if(sx<0){
+                down();
+            }
+        }
+
+
+
+    });
+
+
+    start();
+
+
+</script>
+</body>
+</html>
