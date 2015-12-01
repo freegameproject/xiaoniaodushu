@@ -152,150 +152,181 @@
     }
     function up() {
 
+        var from = 0;
+        var to = 0;
+        var obj = '';
+
+
         if (map[11] == 0) {
-            map[11] = parseInt(document.querySelector('.obj[at=map_21]').getAttribute('id').replace('obj_', ''));
-            document.querySelector('.obj[at=map_21]').setAttribute('at', 'map_11');
-            map[21] = 0;
+            from = 21;
+            to = 11;
         }
 
         else if (map[12] == 0) {
-            map[12] = parseInt(document.querySelector('.obj[at=map_22]').getAttribute('id').replace('obj_', ''));
-            document.querySelector('.obj[at=map_22]').setAttribute('at', 'map_12');
-            map[22] = 0;
+            from = 22;
+            to = 12;
         }
 
         else if (map[13] == 0) {
-            map[13] = parseInt(document.querySelector('.obj[at=map_23]').getAttribute('id').replace('obj_', ''));
-
-            document.querySelector('.obj[at=map_23]').setAttribute('at', 'map_13');
-            map[23] = 0;
+            from = 23;
+            to = 13;
         }
 
         else if (map[21] == 0) {
-            map[21] = parseInt(document.querySelector('.obj[at=map_31]').getAttribute('id').replace('obj_', ''));
-
-            document.querySelector('.obj[at=map_31]').setAttribute('at', 'map_21');
-            map[31] = 0;
+            from = 31;
+            to = 21;
         }
 
         else if (map[22] == 0) {
-            map[22] = parseInt(document.querySelector('.obj[at=map_32]').getAttribute('id').replace('obj_', ''));
-
-            document.querySelector('.obj[at=map_32]').setAttribute('at', 'map_22');
-            map[32] = 0;
+            from = 32;
+            to = 22;
         }
 
         else if (map[23] == 0) {
-            map[23] = parseInt(document.querySelector('.obj[at=map_33]').getAttribute('id').replace('obj_', ''));
-
-            document.querySelector('.obj[at=map_33]').setAttribute('at', 'map_23');
-            map[33] = 0;
+            from = 33;
+            to = 23;
         }
+
+        if (to != 0) {
+            map[to] = parseInt(document.querySelector('.obj[at=map_' + from + ']').getAttribute('id').replace('obj_', ''));
+            document.querySelector('.obj[at=map_' + from + ']').setAttribute('at', 'map_' + to);
+            map[from] = 0;
+        }
+
 
         check();
     }
     function down() {
 
+        var from = 0;
+        var to = 0;
+        var obj = '';
+
+
         if (map[31] == 0) {
-            map[31] = parseInt(document.querySelector('.obj[at=map_21]').getAttribute('id').replace('obj_', ''));
-
-            document.querySelector('.obj[at=map_21]').setAttribute('at', 'map_31');
-            map[21] = 0;
+            from = 21;
+            to = 31;
         }
+
         else if (map[32] == 0) {
-            map[32] = parseInt(document.querySelector('.obj[at=map_22]').getAttribute('id').replace('obj_', ''));
-
-            document.querySelector('.obj[at=map_22]').setAttribute('at', 'map_32');
-            map[22] = 0;
-
+            from = 22;
+            to = 32;
         }
-        else if (map[33] == 0) {
-            map[33] = parseInt(document.querySelector('.obj[at=map_23]').getAttribute('id').replace('obj_', ''));
 
-            document.querySelector('.obj[at=map_23]').setAttribute('at', 'map_33');
-            map[23] = 0;
+        else if (map[33] == 0) {
+            from = 23;
+            to = 33;
         }
 
         else if (map[21] == 0) {
-            map[21] = parseInt(document.querySelector('.obj[at=map_11]').getAttribute('id').replace('obj_', ''));
-
-            document.querySelector('.obj[at=map_11]').setAttribute('at', 'map_21');
-            map[11] = 0;
+            from = 11;
+            to = 21;
         }
+
         else if (map[22] == 0) {
-            map[22] = parseInt(document.querySelector('.obj[at=map_12]').getAttribute('id').replace('obj_', ''));
-
-            document.querySelector('.obj[at=map_12]').setAttribute('at', 'map_22');
-            map[12] = 0;
+            from = 12;
+            to = 22;
         }
-        else if (map[23] == 0) {
-            map[23] = parseInt(document.querySelector('.obj[at=map_13]').getAttribute('id').replace('obj_', ''));
 
-            document.querySelector('.obj[at=map_13]').setAttribute('at', 'map_23');
-            map[13] = 0;
+        else if (map[23] == 0) {
+            from = 13;
+            to = 23;
+        }
+
+        if (to != 0) {
+            map[to] = parseInt(document.querySelector('.obj[at=map_' + from + ']').getAttribute('id').replace('obj_', ''));
+            document.querySelector('.obj[at=map_' + from + ']').setAttribute('at', 'map_' + to);
+            map[from] = 0;
         }
 
         check();
     }
 
     function left() {
-        if (map[11] === 0) {
-            map[11] = parseInt(document.querySelector('.obj[at=map_12]').getAttribute('id').replace('obj_', ''));
-            document.querySelector('.obj[at=map_12]').setAttribute('at', 'map_11');
-            map[12] = 0;
-        } else if (map[12] == 0) {
-            map[12] = parseInt(document.querySelector('.obj[at=map_13]').getAttribute('id').replace('obj_', ''));
-            document.querySelector('.obj[at=map_13]').setAttribute('at', 'map_12');
-            map[13] = 0;
-        } else if (map[21] == 0) {
-            map[21] = parseInt(document.querySelector('.obj[at=map_22]').getAttribute('id').replace('obj_', ''));
-            document.querySelector('.obj[at=map_22]').setAttribute('at', 'map_21');
-            map[22] = 0;
-        } else if (map[22] == 0) {
-            map[22] = parseInt(document.querySelector('.obj[at=map_23]').getAttribute('id').replace('obj_', ''));
-            document.querySelector('.obj[at=map_23]').setAttribute('at', 'map_22');
-            map[23] = 0;
-        } else if (map[31] == 0) {
-            map[31] = parseInt(document.querySelector('.obj[at=map_32]').getAttribute('id').replace('obj_', ''));
-            document.querySelector('.obj[at=map_32]').setAttribute('at', 'map_31');
-            map[32] = 0;
-        } else if (map[32] == 0) {
-            map[32] = parseInt(document.querySelector('.obj[at=map_33]').getAttribute('id').replace('obj_', ''));
-            document.querySelector('.obj[at=map_33]').setAttribute('at', 'map_32');
-            map[33] = 0;
+        var from = 0;
+        var to = 0;
+        var obj = '';
+
+
+        if (map[11] == 0) {
+            from = 12;
+            to = 11;
+        }
+
+        else if (map[12] == 0) {
+            from = 13;
+            to = 12;
+        }
+
+        else if (map[21] == 0) {
+            from = 22;
+            to = 21;
+        }
+
+        else if (map[22] == 0) {
+            from = 23;
+            to = 22;
+        }
+
+        else if (map[31] == 0) {
+            from = 32;
+            to = 31;
+        }
+
+        else if (map[32] == 0) {
+            from = 33;
+            to = 32;
+        }
+
+        if (to != 0) {
+            map[to] = parseInt(document.querySelector('.obj[at=map_' + from + ']').getAttribute('id').replace('obj_', ''));
+            document.querySelector('.obj[at=map_' + from + ']').setAttribute('at', 'map_' + to);
+            map[from] = 0;
         }
         check();
     }
 
     function right() {
 
-        if (map[13] === 0) {
-            map[13] = parseInt(document.querySelector('.obj[at=map_12]').getAttribute('id').replace('obj_', ''));
-            document.querySelector('.obj[at=map_12]').setAttribute('at', 'map_13');
-            map[12] = 0;
+        var from = 0;
+        var to = 0;
+        var obj = '';
 
-        } else if (map[23] === 0) {
-            map[23] = parseInt(document.querySelector('.obj[at=map_22]').getAttribute('id').replace('obj_', ''));
-            document.querySelector('.obj[at=map_22]').setAttribute('at', 'map_23');
-            map[22] = 0;
 
-        } else if (map[33] === 0) {
-            map[33] = parseInt(document.querySelector('.obj[at=map_32]').getAttribute('id').replace('obj_', ''));
-            document.querySelector('.obj[at=map_32]').setAttribute('at', 'map_33');
-            map[32] = 0;
-        } else if (map[12] === 0) {
-            map[12] = parseInt(document.querySelector('.obj[at=map_11]').getAttribute('id').replace('obj_', ''));
-            document.querySelector('.obj[at=map_11]').setAttribute('at', 'map_12');
-            map[11] = 0;
+        if (map[12] == 0) {
+            from = 11;
+            to = 12;
+        }
 
-        } else if (map[22] === 0) {
-            map[22] = parseInt(document.querySelector('.obj[at=map_21]').getAttribute('id').replace('obj_', ''));
-            document.querySelector('.obj[at=map_21]').setAttribute('at', 'map_22');
-            map[21] = 0;
-        } else if (map[32] === 0) {
-            map[32] = parseInt(document.querySelector('.obj[at=map_31]').getAttribute('id').replace('obj_', ''));
-            document.querySelector('.obj[at=map_31]').setAttribute('at', 'map_32');
-            map[31] = 0;
+        else if (map[13] == 0) {
+            from = 12;
+            to = 13;
+        }
+
+        else if (map[22] == 0) {
+            from = 21;
+            to = 22;
+        }
+
+        else if (map[23] == 0) {
+            from = 22;
+            to = 23;
+        }
+
+        else if (map[32] == 0) {
+            from = 31;
+            to = 32;
+        }
+
+        else if (map[33] == 0) {
+            from = 32;
+            to = 33;
+        }
+
+        if (to != 0) {
+            map[to] = parseInt(document.querySelector('.obj[at=map_' + from + ']').getAttribute('id').replace('obj_', ''));
+            document.querySelector('.obj[at=map_' + from + ']').setAttribute('at', 'map_' + to);
+            map[from] = 0;
         }
         check();
     }
@@ -337,30 +368,29 @@
     document.addEventListener('touchend', function () {
         event.preventDefault();
 
-        var zy=start_x-end_x;//左右
-        var sx=start_y-end_y;//上下
+        var zy = start_x - end_x;//左右
+        var sx = start_y - end_y;//上下
 
-        if(Math.abs(zy)>Math.abs(sx)){
+        if (Math.abs(zy) > Math.abs(sx)) {
             //zy
-            if(zy>0){
+            if (zy > 0) {
                 left();
             }
-            if(zy<0){
+            if (zy < 0) {
                 right();
             }
 
         }
 
-        if(Math.abs(zy)<Math.abs(sx)){
+        if (Math.abs(zy) < Math.abs(sx)) {
             //sx
-            if(sx>0){
+            if (sx > 0) {
                 up();
             }
-            if(sx<0){
+            if (sx < 0) {
                 down();
             }
         }
-
 
 
     });
