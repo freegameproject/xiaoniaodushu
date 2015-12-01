@@ -91,53 +91,63 @@
 <script>
     var map = [];
 
-    var yes_map = [1, 2, 3, 4, 5, 6, 7, 8, 0];
-    var random_map = yes_map;
+    var obj_map = [1, 2, 3, 4, 5, 6, 7, 8, 0];
+    var at_map = [11, 12, 13, 21, 22, 23, 31, 32, 33];
 
     function start() {
 
-        random_map = yes_map.sort(function (x, y) {
+        var random_at_map = at_map.sort(function (x, y) {
             return Math.random() > 0.5 ? -1 : 1
         });
 
-        map[11] = random_map[0];
-        map[12] = random_map[1];
-        map[13] = random_map[2];
+        var random_obj_map = obj_map.sort(function (x, y) {
+            return Math.random() > 0.5 ? -1 : 1
+        });
 
-        map[21] = random_map[3];
-        map[22] = random_map[4];
-        map[23] = random_map[5];
 
-        map[31] = random_map[6];
-        map[32] = random_map[7];
-        map[33] = random_map[8];
 
-        if (random_map[0] != 0) {
-            document.querySelector('#obj_1').innerText = random_map[0];
+        map[11] = random_obj_map[0];
+        map[12] = random_obj_map[1];
+        map[13] = random_obj_map[2];
+
+        map[21] = random_obj_map[3];
+        map[22] = random_obj_map[4];
+        map[23] = random_obj_map[5];
+
+        map[31] = random_obj_map[6];
+        map[32] = random_obj_map[7];
+        map[33] = random_obj_map[8];
+
+
+
+
+
+        if (random_obj_map[0] != 0) {
+            document.querySelector('#obj_'+map[11]).innerText = random_obj_map[0];
         }
-        if (random_map[1] != 0) {
-            document.querySelector('#obj_2').innerText = random_map[1];
+        if (random_obj_map[1] != 0) {
+            document.querySelector('#obj_'+map[12]).innerText = random_obj_map[1];
         }
-        if (random_map[2] != 0) {
-            document.querySelector('#obj_3').innerText = random_map[2];
+        if (random_obj_map[2] != 0) {
+            document.querySelector('#obj_'+map[13]).innerText = random_obj_map[2];
         }
-        if (random_map[3] != 0) {
-            document.querySelector('#obj_4').innerText = random_map[3];
+        if (random_obj_map[3] != 0) {
+            document.querySelector('#obj_'+map[21]).innerText = random_obj_map[3];
         }
-        if (random_map[4] != 0) {
-            document.querySelector('#obj_5').innerText = random_map[4];
+        if (random_obj_map[4] != 0) {
+            document.querySelector('#obj_'+map[22]).innerText = random_obj_map[4];
         }
-        if (random_map[5] != 0) {
-            document.querySelector('#obj_6').innerText = random_map[5];
+        if (random_obj_map[5] != 0) {
+            document.querySelector('#obj_'+map[23]).innerText = random_obj_map[5];
         }
-        if (random_map[6] != 0) {
-            document.querySelector('#obj_7').innerText = random_map[6];
+        if (random_obj_map[6] != 0) {
+            document.querySelector('#obj_'+map[31]).innerText = random_obj_map[6];
         }
-        if (random_map[7] != 0) {
-            document.querySelector('#obj_8').innerText = random_map[7];
+        if (random_obj_map[7] != 0) {
+            document.querySelector('#obj_'+map[32]).innerText = random_obj_map[7];
         }
-        if (random_map[8] != 0) {
-            document.querySelector('#obj_9').innerText = random_map[8];
+        if (random_obj_map[8] != 0) {
+            document.querySelector('#obj_'+map[33]).innerText = random_obj_map[8];
         }
 
 
@@ -187,11 +197,7 @@
             to = 23;
         }
 
-        if (to != 0) {
-            map[to] = parseInt(document.querySelector('.obj[at=map_' + from + ']').getAttribute('id').replace('obj_', ''));
-            document.querySelector('.obj[at=map_' + from + ']').setAttribute('at', 'map_' + to);
-            map[from] = 0;
-        }
+        move(from, to);
 
 
         check();
@@ -233,11 +239,7 @@
             to = 23;
         }
 
-        if (to != 0) {
-            map[to] = parseInt(document.querySelector('.obj[at=map_' + from + ']').getAttribute('id').replace('obj_', ''));
-            document.querySelector('.obj[at=map_' + from + ']').setAttribute('at', 'map_' + to);
-            map[from] = 0;
-        }
+        move(from, to);
 
         check();
     }
@@ -278,11 +280,7 @@
             to = 32;
         }
 
-        if (to != 0) {
-            map[to] = parseInt(document.querySelector('.obj[at=map_' + from + ']').getAttribute('id').replace('obj_', ''));
-            document.querySelector('.obj[at=map_' + from + ']').setAttribute('at', 'map_' + to);
-            map[from] = 0;
-        }
+        move(from, to);
         check();
     }
 
@@ -323,12 +321,17 @@
             to = 33;
         }
 
-        if (to != 0) {
-            map[to] = parseInt(document.querySelector('.obj[at=map_' + from + ']').getAttribute('id').replace('obj_', ''));
-            document.querySelector('.obj[at=map_' + from + ']').setAttribute('at', 'map_' + to);
+        move(from, to);
+        check();
+    }
+
+    function move(from, to) {
+        if (to != 0 && from!=0) {
+            var obj=document.querySelector('.obj[at=map_' + from + ']');
+            map[to] = parseInt(obj.getAttribute('id').replace('obj_', ''));
+            obj.setAttribute('at', 'map_' + to);
             map[from] = 0;
         }
-        check();
     }
 
     function check() {
