@@ -14,7 +14,9 @@
             right: 0;
             top: 0;
             bottom: 0;
-            background: #ccc;
+            background: #666;
+            border: 5px #ccc solid;
+            border-radius: 5px;
         }
 
         .obj {
@@ -25,7 +27,7 @@
             height: 100px;
             text-align: center;
             line-height: 100px;
-            transition: all 0.5s;
+            transition: all 0.3s;
         }
 
         .obj[at=map_11] {
@@ -357,7 +359,10 @@
     function check() {
 
         if (map[11] === 1 && map[12] === 2 && map[13] === 3 && map[21] === 4 && map[22] === 5 && map[23] === 6 && map[31] === 7 && map[32] === 8 && map[33] === 0) {
-            success();
+            setTimeout(function(){
+                success();
+            },5000);
+
         } else {
             unsuccess();
         }
